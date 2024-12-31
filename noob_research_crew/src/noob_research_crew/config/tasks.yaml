@@ -1,0 +1,24 @@
+research_task:
+  description: >
+    Conduct a thorough research about {topic}. Follow these steps:
+    1. Start by using the Serper tool to perform a comprehensive web search and gather
+       relevant articles and resources about {topic}.
+    2. Use the Tavily tool to scrape and summarize textual data from large content sources.
+    3. Utilize the Firecrawl tool to perform deep crawling on specific websites to uncover
+       hidden or detailed insights.
+    4. Explore YouTube using the YouTube tool to identify and extract relevant video content
+       related to {topic}.
+    Make sure to organize all findings in a structured format for easy understanding.
+  expected_output: >
+    A list of 10 bullet points summarizing the most important information about {topic}, 
+    including insights from web searches, text summarization, deep crawling, and video analysis.
+  agent: researcher
+
+reporting_task:
+  description: >
+    Review the context and findings provided by the research task. Expand each 
+    key point into a full section for a report. The report should be structured,
+    detailed, and present all relevant information clearly.
+  expected_output: >
+    A fully-fledged markdown report containing detailed sections for each key topic.
+  agent: reporting_analyst
