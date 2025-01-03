@@ -1,17 +1,54 @@
-research_task:
+serper_comparison_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is 2024.
+    Conduct a thorough comparison between {item1} and {item2} using SerperDevTool to gather relevant articles and resources:
+    - First, search for {item1} independently with reference to {goal}.
+    - Then, search for {item2} independently with reference to {goal}.
+    - Finally, search for comparisons between {item1} and {item2} with reference to {goal}.
+    - This report should be a markdown file that is easy to read and understand.
+    - This report should have a title saying "Serper Search Report"
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
+    An aggregated summary of findings from web searches, including key articles and resources for each item and their comparison, with URLs listed alongside each finding.
+  async_execution: true
   agent: researcher
 
-reporting_task:
+tavily_comparison_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Scrape and summarize textual data from large content sources using TavilySearchTool:
+    - First, gather data for {item1} with reference to {goal}.
+    - Then, gather data for {item2} with reference to {goal}.
+    - Finally, gather data comparing {item1} and {item2} with reference to {goal}.
+    - This report should be a markdown file that is easy to read and understand.
+    - This report should have a title saying "Tavily Search Report"
   expected_output: >
-    A fully fledge reports with the mains topics, each with a full section of information.
-    Formatted as markdown without '```'
+    An aggregated summary of findings from content sources, including key data points for each item and their comparison, with URLs listed alongside each finding.
+  async_execution: true
+  agent: researcher
+
+reddit_search_comparison_task:
+  description: >
+    Explore Reddit for discussions and insights related to both items using RedditTavilySearchTool:
+    - First, explore discussions about {item1} with reference to {goal}.
+    - Then, explore discussions about {item2} with reference to {goal}.
+    - Finally, explore discussions comparing {item1} and {item2} with reference to {goal}.
+    - This report should be a markdown file that is easy to read and understand.
+    - This report should have a title saying "Reddit Search Report"
+  expected_output: >
+    An aggregated summary of Reddit discussions, including key insights for each item and their comparison, with URLs listed alongside each finding.
+  async_execution: true
+  agent: researcher
+
+final_comparison_report_task:
+  description: >
+    Compile all research information from the Serper, Tavily Search, and Reddit Search comparison tasks 
+    to generate a comprehensive comparison report.
+    This comprehensive report should be a markdown file that is easy to read and understand.
+    This report should include a summary of the research from each tool, 
+    a final recommendation on which item is better based on the specified goal,
+    and links/references to all sources used.
+  expected_output: >
+    A detailed comparison report in markdown format, including sections for each tool's findings, a final recommendation based on the goal, and links/references to all sources for further exploration.
   agent: reporting_analyst
+  context:
+    - serper_comparison_task
+    - tavily_comparison_task
+    - reddit_search_comparison_task

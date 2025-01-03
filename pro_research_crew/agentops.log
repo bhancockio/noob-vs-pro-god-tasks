@@ -1,0 +1,3 @@
+2025-01-02 21:42:11,551 - INFO - Session Replay: https://app.agentops.ai/drilldown?session_id=f4f1aa27-ab74-48e3-a0d0-e89a1f252883
+2025-01-02 21:43:54,393 - INFO - Session Stats - Duration: 1m 43.1s | Cost: $0.020192 | LLMs: 31 | Tools: 7 | Actions: 0 | Errors: 0
+2025-01-02 21:43:54,398 - INFO - Session Replay: https://app.agentops.ai/drilldown?session_id=f4f1aa27-ab74-48e3-a0d0-e89a1f252883
